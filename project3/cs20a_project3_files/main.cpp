@@ -4,16 +4,16 @@
 #define RUN0 //RUN1 RUN2 RUN3 RUN4
 #define MAKE_MEMBERS_PUBLIC
 
-#ifdef RUN0 
+#ifdef RUN0
 
-#include"list.h"
-#include"studentinfo.h"
-#include<iostream>
-#include<string>  
+#include "list.h"
+#include "studentinfo.h"
+#include <iostream>
+#include <string>
 
-
-template<typename Type>
-bool pushFrontTest( List<Type>& l) {
+template <typename Type>
+bool pushFrontTest(List<Type> &l)
+{
 	//testing senario:
 	//1.when list is empty, head and tail points to same thing
 	l.push_front("Hi");
@@ -38,22 +38,13 @@ bool pushFrontTest( List<Type>& l) {
 	return true;
 }
 
-
-
-
-
-
-
-
-
-
-int main() {
+int main()
+{
 
 	std::cout << StudentInfo::name() << std::endl;
 	std::cout << StudentInfo::id() << std::endl;
 
 	List<std::string> l; //List of integers
-
 
 	pushFrontTest(l) ? std::cout << "Push front     OK\n" : std::cout << "push front     Fail\n";
 
@@ -61,12 +52,10 @@ int main() {
 	//	std::cout << "push front OK!";
 	//}
 
-
-
 	l.print(); // 2 Bob World Hello
 
 	//l.pop_rear();
-	//l.print(); // 2 Bob World 
+	//l.print(); // 2 Bob World
 
 	//std::cout << l.front() << std::endl; // 2
 	return 0;
@@ -74,30 +63,30 @@ int main() {
 
 #elif defined RUN1
 #define MAKE_MEMBERS_PUBLIC
-#include"list.h"
-#include<assert.h>
+#include "list.h"
+#include <assert.h>
 
 //Unit test example for push_font on initially empty list
 
-int main() {
+int main()
+{
 
 	// Step 1: Initial state
 	// Assume that constructor implemented properly
-	// If you're not sure if the constructor is 
+	// If you're not sure if the constructor is
 	// implemented properly, STOP, go back and make
-	// sure. Luckily ther default constructor is 
+	// sure. Luckily ther default constructor is
 	// done for you.  But the point remains, never,
 	// ever, use a function in a test that isn't itself
 	// verified to function to spec.
 	List<int> l;
-
 
 	// Step 2: Execute the function to test
 	l.push_front(99);
 
 	// Step 3: Verify what you expect to observe.
 	// You must know what is suppose to happen in
-	// order to analyze for correctness. Generally, 
+	// order to analyze for correctness. Generally,
 	// you must permute all possible combinations
 	// of all member variables.
 	assert(l.head != nullptr);
@@ -106,20 +95,18 @@ int main() {
 	assert(l.head->prev == nullptr);
 	assert(l.head->next == nullptr);
 	assert(l.head->item == 99);
-	
-
 }
-
 
 #elif defined RUN2
 #define MAKE_MEMBERS_PUBLIC
-#include"list.h"
-#include<assert.h>
-#include<string>
+#include "list.h"
+#include <assert.h>
+#include <string>
 
 //Unit test example for push_font on initially non empty list
 
-int main() {
+int main()
+{
 
 	// Step 1: Initial state
 	// Same as above, except we must first populate the list
@@ -127,10 +114,10 @@ int main() {
 	// use it to generate the initial state of our list
 	// to test.  So we have to manually set the initial state
 	// in this case we are creating a list with three nodes.
-	List<std::string>::Node* first = new List<std::string>::Node;
-	List<std::string>::Node* second = new List<std::string>::Node;
-	List<std::string>::Node* third = new List<std::string>::Node;
-	
+	List<std::string>::Node *first = new List<std::string>::Node;
+	List<std::string>::Node *second = new List<std::string>::Node;
+	List<std::string>::Node *third = new List<std::string>::Node;
+
 	// We have to manually linked everything together:
 	first->item = "first";
 	first->prev = nullptr;
@@ -155,11 +142,11 @@ int main() {
 	// For example we can use this as one test for push_front;
 	l.push_front("Zero");
 
-	// Step 3: Verify:  Technically, we should examine all 
+	// Step 3: Verify:  Technically, we should examine all
 	// member variables, and all nodes' item, next, prev pointers
 	// to ensure that the push_front didn't mangle any of the
 	// internal nodes.  But, this is mostly just to illustrate
-	// how you might develop your own tests.  
+	// how you might develop your own tests.
 	assert(l.num_nodes == 4);
 	assert(l.head->prev == nullptr);
 	assert(l.head == first->prev);
@@ -171,11 +158,6 @@ int main() {
 #else
 
 #endif
-
-
-
-
-
 
 //#include <iostream>
 //using namespace std;
@@ -215,7 +197,7 @@ int main() {
 //
 //void LinkedList::printItems()
 //{
-//    //start at head 
+//    //start at head
 //
 //     //while there are node
 //        //print Node
@@ -251,7 +233,7 @@ int main() {
 //        //last_node->next is new node
 //        //new node->next is nullptr
 //
-//        
+//
 //    if (head == nullptr)
 //        addToFront(v);
 //    else {
@@ -264,7 +246,7 @@ int main() {
 //        n->value = v;
 //        p->next = n;
 //        n->next = nullptr;
-//    }   
+//    }
 //}
 //
 //
@@ -277,7 +259,7 @@ int main() {
 //        //allocate new node
 //        //put the value
 //        //link new node into above Node
-//        //line new node->next 
+//        //line new node->next
 //    if (head == nullptr)
 //        addToFront(v);
 //    else if(v<head->value) {
@@ -300,22 +282,22 @@ int main() {
 //
 //
 //void LinkedList::deleteItem(string v) {
-//    //if the list empty return 
-//    //if the fist node has the item 
+//    //if the list empty return
+//    //if the fist node has the item
 //        //create a node to hold the head
 //        //head point to second node
-//        //delete the target 
+//        //delete the target
 //        //return done
 //    //if the target is somewhere middle
 //        //traverse to the node above teh target that we want to delete
-//        //if we found the target node 
+//        //if we found the target node
 //            //create a node to hold the target
 //            //link above node to the node below
-//            //delete the target 
+//            //delete the target
 //            //return done
 //
 //    if (head == nullptr)return;
-//    
+//
 //    if (head->value == v) {
 //        Node* killMe = head;
 //        head = killMe->next;
@@ -369,6 +351,6 @@ int main() {
 //
 //int main()
 //{
-//   
+//
 //    return 0;
 //}

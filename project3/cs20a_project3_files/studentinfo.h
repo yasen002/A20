@@ -1,11 +1,12 @@
 #ifndef STUDENTINFO_H
 #define STUDENTINFO_H
-#include<string>
+#include <string>
 
 //Replace "Your Name" and "Your ID#";
-namespace StudentInfo {
-	std::string name() { return "Yasen Abudikeranmu"; }
-	std::string id() { return "1672199"; }
-};
+namespace StudentInfo
+{
+std::string name() { return "Yasen Abudikeranmu"; }
+std::string id() { return "1672199"; }
+}; // namespace StudentInfo
 
 #endif
