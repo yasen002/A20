@@ -7,7 +7,6 @@
 // Linked List object that maintains both head and tail pointers
 // and the num_nodes of the list.  Note that you have to keep the head,
 // tail and num_nodes consistent with the intended state of the List
-// otherwise very bad things happen.
 template <typename Type>
 class List
 {
@@ -48,7 +47,7 @@ private:
 	// member functions
 	class Node;
 
-	// We'll have both head and tail points for
+	// this have both head and tail points for
 	// Fast insertion/deletion from both ends.
 	Node *head;
 	Node *tail;
@@ -68,7 +67,7 @@ private:
 */
 
 /* Node definition
-//		Already implemented, nothing to do here but to use it.
+//		deafult implementation of the node object
 */
 template <typename Type>
 class List<Type>::Node
@@ -84,7 +83,6 @@ public:
 
 /* List default constructor
 //		Set head and tail pointer to point to nothing, num_nodes is zero
-//		Already implemented, nothing to do.
 */
 template <typename Type>
 List<Type>::List() : head(nullptr), tail(nullptr), num_nodes(0)
@@ -94,7 +92,7 @@ List<Type>::List() : head(nullptr), tail(nullptr), num_nodes(0)
 /* Copy constructor  
 //		This should create an entirely new linked list with the same 
 //		number of Nodes and the Values stored these Nodes in the same 
-//		order as seen the other list�s Nodes.  This should not result 
+//		order as seen the other lists Nodes.  This should not result 
 //		in any memory leaks or aliasing.  
 */
 template <typename Type>
@@ -132,17 +130,8 @@ List<Type>::List(const List<Type> &other)
 			tail = cp;
 			p = p->next;
 		}
-		//all the 5coding part is done but have not test it yet!;
+		
 	}
-
-	////set the head to new node
-	//List<Type>::Node* p = new List<Type>::Node;  //why do i have to use it this way------?????
-	////other.head == this.head
-
-	//this->num_nodes = other->num_nodes;
-	//for (int i = 0; i < this->num_nodes; i++) {
-
-	//}
 }
 /* Overloaded assignment operator 
 //		Causes the already existing linked list to be identical to the 
@@ -195,7 +184,7 @@ List<Type>::~List()
 
 /* List print
 //		Traverses list and prints items in list to console
-//		Assumes << is overloaded for object Type.---------------------?????
+//		Assumes << is overloaded for object Type.
 */
 
 template <typename Type>
@@ -225,7 +214,7 @@ void List<Type>::print() const
 template <typename Type>
 bool List<Type>::empty() const
 {
-	/* TODO */
+
 	if (num_nodes == 0)
 		return true;
 
@@ -340,10 +329,7 @@ void List<Type>::add_at(int index, const Type &item)
 	//All other cases, add the item to the appropriate location
 	//traverse to one Index ahead
 	//create New node with value init
-	//New.next = Index.next
-	//Index.next = New node
-	//New.prev = Index
-	//New.next.prev = New
+
 	Node *p = new Node;
 	p = head;
 	for (int i = 0; i < num_nodes; i++)
@@ -467,7 +453,7 @@ int List<Type>::size() const
 /* List find
 //		Traverses the list to see if the item is in the list
 //		if it is return the index of that item, otherwise
-//		return -1. Assumes the == operator is overloaded for//?????
+//		return -1. Assumes the == operator is overloaded for
 //		object Type.
 */
 template <typename Type>
